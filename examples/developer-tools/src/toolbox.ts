@@ -211,6 +211,13 @@ export const toolbox = {
             HUE: 330,
           },
         },
+        {
+          kind: 'block',
+          type: 'colour_hex',
+          fields: {
+            HEX: '#a55b5b',
+          }
+        }
       ],
     },
   ],

@@ -34,6 +34,23 @@ jsonDefinitionGenerator.forBlock['colour_hue'] = function (
 };
 
 /**
+ * JSON definition for the "colour_hex" block.
+ *
+ * @param block
+ * @param generator
+ * @returns The JSON representing the stack of input blocks.
+ *    The entire stack will be returned due to the `scrub_` function.
+ *    The JSON returned here should be part of the `args0` of the JSON
+ *    in the final block definition.
+ */
+jsonDefinitionGenerator.forBlock['colour_hex'] = function (
+    block: Blockly.Block,
+    generator: JsonDefinitionGenerator,
+): [string, number] {
+  return [`"${this.getFieldValue('HEX')}"`, JsonOrder.ATOMIC];
+}
+
+/**
  * JavaScript definition for the "colour_hue" block.
  *
  * @param block
@@ -45,4 +62,18 @@ javascriptDefinitionGenerator.forBlock['colour_hue'] = function (
   generator: JavascriptDefinitionGenerator,
 ): [string, number] {
   return [this.getFieldValue('HUE').toString(), JsOrder.ATOMIC];
+};
+
+/**
+ * JavaScript definition for the "colour_hex" block.
+ *
+ * @param block
+ * @param generator
+ * @returns The value of the colour field.
+ */
+javascriptDefinitionGenerator.forBlock['colour_hex'] = function (
+    block: Blockly.Block,
+    generator: JavascriptDefinitionGenerator,
+): [string, number] {
+  return [`'${this.getFieldValue('HEX')}'`, JsOrder.ATOMIC];
 };

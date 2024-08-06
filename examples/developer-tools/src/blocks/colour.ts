@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import * as Blockly from "blockly/core";
 import {FieldAngle} from '@blockly/field-angle';
 
 /**
@@ -22,4 +23,24 @@ export const colourHue = {
   updateBlockColour: function (hue: number) {
     this.getSourceBlock().setColour(hue);
   },
+};
+
+/**
+ * A hex input to set the colour of a block.
+ */
+export const colourHex = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('hex:')
+      .appendField(new Blockly.FieldTextInput('000000', this.updateBlockColour), 'HEX');
+    this.setOutput(true, 'Colour');
+    this.setTooltip('Paint the block with this colour.');
+    this.setHelpUrl(null);
+  },
+  updateBlockColour: function (text: string) {
+    let hex = Blockly.utils.colour.parse(text);
+    if (hex) {
+      this.getSourceBlock().setColour(hex);
+    }
+  }
 };

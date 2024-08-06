@@ -31,7 +31,7 @@ import {
   fieldNumber,
   fieldVariable,
 } from './fields';
-import {colourHue} from './colour';
+import {colourHue, colourHex} from './colour';
 
 // import for side effects for now
 import '../output-generators/factory_base';
@@ -78,6 +78,7 @@ export const registerAllBlocks = function () {
     connection_check_group_item: connectionCheckItem,
     connection_check: connectionCheck,
     colour_hue: colourHue,
+    colour_hex: colourHex
   });
 };
 /* eslint-enable @typescript-eslint/naming-convention */
